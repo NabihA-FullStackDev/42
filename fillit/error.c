@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 10:05:01 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 12:48:41 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			errorlines(char *line)
 	return (1);
 }
 
-static int	getnbconnect(char tab[4][4], i, j);
+static int	getnbconnect(char tab[4][5], int i, int j)
 {
 	int	nbconnect;
 

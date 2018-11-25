@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:28 by naali             #+#    #+#             */
-/*   Updated: 2018/11/25 10:16:21 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 12:48:42 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 #include "libft/includes/get_next_line.h"
 #include "error.h"
 #include "get_tetriminos.h"
+#include "getpdir.h"
 
 static void			copytabtolst(char tab[4][5], t_dbs **tetris, int id)
 {
 	t_dbs		*tmp;
+	int			pdir[NBPDIR][COORDO];
 
-	tmp = dbs_new(('A' + id), tab);
+	tmp = dbs_new(('A' + id), pdir);
+	getpdir(tab, *tetris);
 	dbs_pushback(tetris, tmp);
 }
 
