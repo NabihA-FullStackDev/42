@@ -1,50 +1,59 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jucapik <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: naali <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/25 10:04:56 by jucapik           #+#    #+#              #
-#    Updated: 2018/11/25 12:48:39 by jucapik          ###   ########.fr        #
+#    Created: 2018/11/09 11:18:25 by naali             #+#    #+#              #
+#    Updated: 2018/11/25 17:20:06 by naali            ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME		=	fillit
 
-LIBFT		=	libft.a
+CC			=	gcc
 
-LIBFTPATH	=	libft/
+CFLAGS		+=	-Wall -Wextra -Werror
 
-TESTNAME	=	test
+SRC			=	error.c		s_dbs.c		get_tetriminos.c	getpdir.c	\
+				maintest.c
 
-CFLAGS		=	-Wall -Wextra -Werror
+HEADNAME	=	s_dbs.h error.h get_tetriminos.h getpdir.h
 
-SRCS		=	error.c		get_tetriminos.c	s_dbs.c		maintest.c \
-				getpdir.c
+SRCPATH		= 	./
 
-OBJ			=	$(SRCS:.c=.o)
+HEADPATH	=	./
+
+LIBNAME		=	ft
+
+LIBPATH		=	libft/
+
+LIBHEAD		=	includes
+
+SOURCES		=	$(addprefix $(SRCPATH), $(SRCS))
+
+HEADERS		=	$(addprefix $(HEADPATH), $(HEADNAME))
+
+OBJ			=	$(SRC:.c=.o)
 
 all			:	$(NAME)
 
-$(NAME)		:	$(LIBFT)
-				gcc $(FLAGS) -c $(SRCS)
+$(NAME)		:	$(OBJ) $(HEADERS)
+				@(cd $(LIBPATH) && $(MAKE))
+				$(CC) -o $(NAME) $(OBJ) -I $(LIBPATH)$(LIBHEAD) -L $(LIBPATH) -l$(LIBNAME)
 
-test		:	$(LIBFT) $(OBJ)
-				gcc $(CFLAGS) $(OBJ) -o $(TESTNAME)
+%.o			:	$(SRCPATH)/%.c
+				$(CC) -o $@ -c $< $(CFLAGS)
 
-%.o         :   %.c
-	            gcc -o $@ -c $< $(CFLAGS)
-
-$(LIBFT)	:
-				$(MAKE) -C libft/ all
+.PHONY		:	clean fclean re
 
 clean		:
-				/bin/rm -f *.o # A CHANGER
-				$(MAKE) -C libft/ clean
+				@(cd $(LIBPATH) && $(MAKE) clean)
+				/bin/rm -rf $(OBJ)
 
 fclean		:	clean
-				/bin/rm -f $(NAME)
-				$(MAKE) -C libft/ fclean
+				/bin/rm -rf $(NAME)
+				/bin/rm -rf libft/libft.a
 
 re			:	fclean all

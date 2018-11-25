@@ -6,14 +6,14 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 12:48:41 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 16:51:04 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "error.h"
 #include "libft/includes/libft.h"
+#include "error.h"
 
 int			errorlines(char *line)
 {
