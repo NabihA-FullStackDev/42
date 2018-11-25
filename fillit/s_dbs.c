@@ -6,14 +6,14 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:34:19 by naali             #+#    #+#             */
-/*   Updated: 2018/11/25 11:40:45 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 19:47:29 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "s_dbs.h"
 
-t_dbs			*dbs_new(const char id, int pdir[NBPDIR][COORDO])
+t_dbs			*dbs_new(const char id)
 {
 	int			i;
 	int			j;
@@ -29,7 +29,7 @@ t_dbs			*dbs_new(const char id, int pdir[NBPDIR][COORDO])
 		j = 0;
 		while (j < COORDO)
 		{
-			node->pdir[i][j] = pdir[i][j];
+			node->pdir[i][j] = 0;
 			j = j + 1;
 		}
 		i = i + 1;
@@ -44,7 +44,7 @@ void			dbs_pushback(t_dbs **head, t_dbs *node)
 	t_dbs		*tmp;
 
 	tmp = NULL;
-	if (head != NULL)
+	if (head != NULL && *head != NULL)
 	{
 		tmp = *head;
 		while (tmp != NULL && tmp->next != NULL)
@@ -52,6 +52,9 @@ void			dbs_pushback(t_dbs **head, t_dbs *node)
 		tmp->next = node;
 		node->prev = tmp;
 	}
+	else
+		*head = node;
+		
 }
 
 void			dbs_del(t_dbs **head)

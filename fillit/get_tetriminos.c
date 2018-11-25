@@ -6,42 +6,47 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:28 by naali             #+#    #+#             */
-/*   Updated: 2018/11/25 12:48:42 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 19:45:31 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "libft/includes/get_next_line.h"
 #include "error.h"
 #include "get_tetriminos.h"
 #include "getpdir.h"
 
-static void			copytabtolst(char tab[4][5], t_dbs **tetris, int id)
+static void			copytabtolst(char **tab, t_dbs **tetris, int id)
 {
 	t_dbs		*tmp;
-	int			pdir[NBPDIR][COORDO];
 
-	tmp = dbs_new(('A' + id), pdir);
-	getpdir(tab, *tetris);
+	printf("test0\n");
+	tmp = dbs_new(('A' + id));
+	printf("test1\n");
+	printf("%p\n", tmp);
+	getpdir(tab, tmp);
+	printf("test2\n");
 	dbs_pushback(tetris, tmp);
+	printf("test3\n");
 }
 
-static int			checktab(char tab[4][5], t_dbs **tetris)
+static int			checktab(char **tab, t_dbs **tetris)
 {
 	if (errorform(tab) == -1)
 	{
 		if (tetris != NULL)
+		{
+			/*Fonction de free TAB a faire*/
 			dbs_del(tetris);
+		}
 		return (-1);
 	}
 	return (0);
 }
 
-static int			copylinetotab(char **line, char tab[4][5])
+static int			copylinetotab(char **line, char **tab)
 {
-	int			i;
-
-	i = 0;
 	if (*line != NULL && errorlines(*line) == -1)
 	{
 		free(*line);
@@ -49,32 +54,50 @@ static int			copylinetotab(char **line, char tab[4][5])
 	}
 	if (*line != NULL && **line != '\0')
 	{
-		while (*line[i] != '\0')
-		{
-			*tab[i] = *line[i];
-			i = i + 1;
-		}
-		free(line);
+		*tab = (char*)ft_memmove((void*)*tab, (void*)*line, sizeof(char) * 5);
+		free(*line);
 	}
 	return (0);
 }
 
-int		get_tetriminos(int fd, t_dbs **tetris)
+static char			**init_tab45()
+{
+	int		i;
+	char	**tab;
+
+	i = 0;
+	if ((tab = (char**)malloc(sizeof(char*) * 4)) == NULL)
+		return (NULL);
+	while (i < 4)
+	{
+		if ((tab[i] = (char*)malloc(sizeof(char) * 5)) == NULL)
+			return (NULL);
+		i = i + 1;
+	}
+	i = 0;
+//	printf("tab[%d] = %p\n", i, tab[i]);
+	return (tab);
+}
+
+int					get_tetriminos(int fd, t_dbs **tetris)
 {
 	int		i;
 	int		nb_tetri;
 	char	*line;
-	char	tab[4][5];
+	char	**tab;
 
+	i = 0;
 	nb_tetri = 0;
 	line = NULL;
+	if ((tab = init_tab45()) == NULL)
+		return (-1);
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (i < 4 && copylinetotab(&line, &tab[i]) == -1)
 			return (-1);
 		if (i < 4)
 			i = i + 1;
-		else
+		if (i == 4)
 		{
 			i = 0;
 			if (checktab(tab, tetris) == -1)

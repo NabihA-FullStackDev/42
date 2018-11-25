@@ -6,15 +6,16 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:04:32 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 11:59:24 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/25 19:45:34 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "s_dbs.h"
 
-static void	modifpdir(char tab[4][5], int pos[2], t_dbs *tetris, int *pdiriter)
+static void	modifpdir(char **tab, int pos[2], t_dbs *tetris, int *pdiriter)
 {
 	static int	xtmp = -1;
 	static int	ytmp = -1;
@@ -23,7 +24,7 @@ static void	modifpdir(char tab[4][5], int pos[2], t_dbs *tetris, int *pdiriter)
 	{
 		xtmp = -1;
 		ytmp = -1;
-	}	
+	}
 	else if (tab[pos[0]][pos[1]] == '#' && xtmp != -1 && ytmp != -1)
 	{
 		tetris->pdir[*pdiriter][0] = pos[0] - ytmp;
@@ -39,13 +40,14 @@ static void	modifpdir(char tab[4][5], int pos[2], t_dbs *tetris, int *pdiriter)
 	}
 }
 
-int			getpdir(char tab[4][5], t_dbs *tetris)
+int			getpdir(char **tab, t_dbs *tetris)
 {
 	int pdiriter;
-	int	pos[2]; //[0] = y, [1] = x
+	int	pos[2];//[0] = y, [1] = x
 
 	pos[0] = 0;
 	pdiriter = 0;
+	printf("%p\n", tetris);
 	while (pos[0] < 4)
 	{
 		pos[1] = 0;

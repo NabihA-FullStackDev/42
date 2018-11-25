@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 16:51:04 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/25 19:41:36 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ int			errorlines(char *line)
 	return (1);
 }
 
-static int	getnbconnect(char tab[4][5], int i, int j)
+static int	getnbconnect(char **tab, int i, int j)
 {
 	int	nbconnect;
 
 	nbconnect = 0;
 	if (i + 1 < 4 && tab[i + 1][j] == '#')
 		nbconnect++;
-	if (i - 1 > 0 && tab[i - 1][j] == '#')
+	if (i - 1 >= 0 && tab[i - 1][j] == '#')
 		nbconnect++;
 	if (j + 1 < 4 && tab[i][j + 1] == '#')
 		nbconnect++;
-	if (j - 1 > 0 && tab[i][j - 1] == '#')
+	if (j - 1 >= 0 && tab[i][j - 1] == '#')
 		nbconnect++;
 	return (nbconnect);
 }
 
-int			errorform(char tab[4][5])
+int			errorform(char **tab)
 {
 	int		i;
 	int		j;
@@ -60,7 +60,7 @@ int			errorform(char tab[4][5])
 	while (i < 4)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < 5)
 		{
 			if (tab[i][j] == '#')
 			{
