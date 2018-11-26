@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:28 by naali             #+#    #+#             */
-/*   Updated: 2018/11/26 15:52:38 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 16:24:53 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_dbs		**copytabtolst(char **tab, t_dbs **tetris, int id)
 {
 	t_dbs		*tmp;
 
+	tmp = NULL;
 	tmp = dbs_new(('A' + id));
 	getpdir(tab, tmp);
 	dbs_pushback(tetris, tmp);
@@ -71,7 +72,6 @@ static char			**init_tab45()
 		i = i + 1;
 	}
 	i = 0;
-//	printf("tab[%d] = %p\n", i, tab[i]);
 	return (tab);
 }
 
@@ -89,9 +89,9 @@ int					get_tetriminos(int fd, t_dbs **tetris)
 		return (-1);
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (i < 4 && copylinetotab(&line, &tab[i]) == -1)
+		if (i < 4 && copylinetotab(&line, &tab[i]) == -1 && *line != '\0')
 			return (-1);
-		if (i < 4)
+		else if (i < 4 && *line != '\0')
 			i = i + 1;
 		if (i == 4)
 		{
@@ -101,7 +101,6 @@ int					get_tetriminos(int fd, t_dbs **tetris)
 			copytabtolst(tab, tetris, nb_tetri);
 			nb_tetri = nb_tetri + 1;
 		}
-		printf("%p\n", *tetris);
 	}
 	return (nb_tetri);
 }
