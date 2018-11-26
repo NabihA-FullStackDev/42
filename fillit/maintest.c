@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:37:03 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 18:03:35 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 19:10:09 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int     main(int ac, char **av)
 	check = -1;
 	size = init_size(ssquare * 4);
 	init_tab(tab);
-	while (check == -1 && size < 6)
+	while (check == -1 && size < LIMTAB)
 	{
 		if ((check = backtrack(size, tetris, &tab[0])) == 1)
 			check = 1;
-		size++;
+		++size;
 	}
 	if (size == LIMTAB)
 		printf("NON\n");

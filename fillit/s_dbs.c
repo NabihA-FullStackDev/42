@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:34:19 by naali             #+#    #+#             */
-/*   Updated: 2018/11/26 15:48:42 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 18:13:12 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void			dbs_pushback(t_dbs **head, t_dbs *node)
 	t_dbs		*tmp;
 
 	tmp = NULL;
-	printf("test\n");
 	if (head != NULL && *head != NULL)
 	{
 		tmp = *head;

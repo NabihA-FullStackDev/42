@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:14:53 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 18:03:38 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 19:08:24 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ecrisforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 		tmppos[0] += tetris->pdir[count][0];
 		tmppos[1] += tetris->pdir[count][1];
 		tab[tmppos[0]][tmppos[1]] = tetris->id;
-		count++;
+		++count;
 	}
 }
 
@@ -69,7 +69,7 @@ static void	effaceforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 		tmppos[0] += tetris->pdir[count][0];
 		tmppos[1] += tetris->pdir[count][1];
 		tab[tmppos[0]][tmppos[1]] = '.';
-		count++;
+		++count;
 	}
 }
 
@@ -91,7 +91,7 @@ static int	checkpos(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB], int pos[2
 		if (tmppos[0] < 0 || tmppos[1] < 0 || tmppos[0] >= size ||
 				tmppos[1] >= size || tab[tmppos[0]][tmppos[1]] != '.')
 			return (-1);
-		count++;
+		++count;
 	}
 	return (1);
 }
@@ -115,9 +115,9 @@ int			backtrack(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 					return (1);
 				effaceforme(pos, tetris, tab);
 			}
-			pos[1]++;
+			++pos[1];
 		}
-		pos[0]++;
+		++pos[0];
 	}
 	return (-1);
 }
