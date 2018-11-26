@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:04:32 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 19:45:34 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/26 15:10:43 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int			getpdir(char **tab, t_dbs *tetris)
 
 	pos[0] = 0;
 	pdiriter = 0;
-	printf("%p\n", tetris);
 	while (pos[0] < 4)
 	{
 		pos[1] = 0;

@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:28 by naali             #+#    #+#             */
-/*   Updated: 2018/11/25 19:45:31 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/26 15:52:38 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,14 @@
 #include "get_tetriminos.h"
 #include "getpdir.h"
 
-static void			copytabtolst(char **tab, t_dbs **tetris, int id)
+static t_dbs		**copytabtolst(char **tab, t_dbs **tetris, int id)
 {
 	t_dbs		*tmp;
 
-	printf("test0\n");
 	tmp = dbs_new(('A' + id));
-	printf("test1\n");
-	printf("%p\n", tmp);
 	getpdir(tab, tmp);
-	printf("test2\n");
 	dbs_pushback(tetris, tmp);
-	printf("test3\n");
+	return (tetris);
 }
 
 static int			checktab(char **tab, t_dbs **tetris)
@@ -105,6 +101,7 @@ int					get_tetriminos(int fd, t_dbs **tetris)
 			copytabtolst(tab, tetris, nb_tetri);
 			nb_tetri = nb_tetri + 1;
 		}
+		printf("%p\n", *tetris);
 	}
 	return (nb_tetri);
 }
