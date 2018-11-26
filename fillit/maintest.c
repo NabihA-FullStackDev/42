@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:37:03 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 16:30:26 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/26 18:03:35 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int     main(int ac, char **av)
 {
 	int     fd;
 	t_dbs	*tetris;
-	t_dbs	*tmp;
 	int		check;
 	int		ssquare;
 	int		size;
@@ -39,22 +38,16 @@ int     main(int ac, char **av)
 	check = -1;
 	size = init_size(ssquare * 4);
 	init_tab(tab);
-	tmp = tetris->next;
-	printf("%d, %d\n", tetris->pdir[0][0], tetris->pdir[0][1]);
-	printf("%d, %d\n", tetris->pdir[1][0], tetris->pdir[1][1]);
-	printf("%d, %d\n", tetris->pdir[2][0], tetris->pdir[2][1]);
-	printf("%d, %d\n", tmp->pdir[0][0], tmp->pdir[0][1]);
-	printf("%d, %d\n", tmp->pdir[1][0], tmp->pdir[1][1]);
-	printf("%d, %d\n", tmp->pdir[2][0], tmp->pdir[2][1]);
-	while (check == -1)
+	while (check == -1 && size < 6)
 	{
-		write(1, "1\n", 2);
-		if ((check = backtrack(size, tetris, &tab[0])) == -1)
-			return (-1);
+		if ((check = backtrack(size, tetris, &tab[0])) == 1)
+			check = 1;
 		size++;
 	}
-	write(1, "!\n", 2);
-	print_tab(size, tab);
+	if (size == LIMTAB)
+		printf("NON\n");
+	else
+		print_tab(size - 1, tab);
 	//mettre les free
 	return (0);
 }

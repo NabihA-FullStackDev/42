@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 12:34:22 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 15:20:18 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 18:00:35 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ int		init_size(int surfacemin)
 	int count;
 
 	count = 2;
-	printf("count = %d, surfacemin = %d\n", count, surfacemin);
 	while (count * count < surfacemin)
-	{
-		printf("count = %d, surfacemin = %d\n", count, surfacemin);
 		count++;
-	}
 	return (count);
 }
 

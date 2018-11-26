@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 12:37:44 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 15:07:15 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/26 17:14:28 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 int		init_size(int surfacemin);
 void	init_tab(char tab[LIMTAB][LIMTAB]);
-void	print_tab(int size, char[LIMTAB][LIMTAB]);
+void	print_tab(int size, char tab[LIMTAB][LIMTAB]);
 
 #endif
