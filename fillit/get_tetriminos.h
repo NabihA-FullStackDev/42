@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:24 by naali             #+#    #+#             */
-/*   Updated: 2018/11/23 15:36:45 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/28 12:58:10 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "s_dbs.h"
 
-int		get_tetriminos(int fd, t_dbs **tetris);
+int		get_tetriminos(int fd, t_dbs **tetris, char **tab);
 
 #endif

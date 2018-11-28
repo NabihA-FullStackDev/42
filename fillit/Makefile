@@ -6,7 +6,7 @@
 #    By: naali <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 11:18:25 by naali             #+#    #+#              #
-#    Updated: 2018/11/26 15:09:35 by jucapik          ###   ########.fr        #
+#    Updated: 2018/11/28 13:11:24 by naali            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,10 +17,10 @@ CC			=	gcc
 CFLAGS		+=	-Wall -Wextra -Werror
 
 SRC			=	error.c		s_dbs.c		get_tetriminos.c	getpdir.c	\
-				maintest.c	init.c	backtrack.c
+				maintest.c	init_var.c	backtrack.c
 
 HEADNAME	=	s_dbs.h		error.h		get_tetriminos.h	getpdir.h	\
-				init.h	backtrack.h
+				init_var.h	backtrack.h	fillit.h
 
 SRCPATH		= 	./
 

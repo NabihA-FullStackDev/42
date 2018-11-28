@@ -6,48 +6,41 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:37:03 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 19:10:09 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 13:14:21 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "fillit.h"
 #include "libft/includes/libft.h"
 #include "get_tetriminos.h"
 #include "error.h"
-#include "init.h"
+#include "init_var.h"
 #include "backtrack.h"
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int     fd;
+	t_fill	f;
 	t_dbs	*tetris;
-	int		check;
-	int		ssquare;
-	int		size;
 	char	tab[LIMTAB][LIMTAB];
 
 	tetris = NULL;
-	if ((fd = check_file(ac, av)) == -1)
-	{
-		printf("%d\n", fd);
+	if ((f.fd = check_file(ac, av)) == -1)
 		return (-1);
-	}
-	ssquare = get_tetriminos(fd, &tetris);
-	check = -1;
-	size = init_size(ssquare * 4);
+	if ((f.ssquare = get_tetriminos(f.fd, &tetris, f.tab)) == -1)
+		return (-1);
+	f.check = -1;
+	f.size = init_size(f.ssquare * 4);
 	init_tab(tab);
-	while (check == -1 && size < LIMTAB)
+	while (f.check == -1 && f.size < LIMTAB)
 	{
-		if ((check = backtrack(size, tetris, &tab[0])) == 1)
-			check = 1;
-		++size;
+		if ((f.check = backtrack(f.size, tetris, &tab[0])) == 1)
+			f.check = 1;
+		++(f.size);
 	}
-	if (size == LIMTAB)
-		printf("NON\n");
-	else
-		print_tab(size - 1, tab);
-	//mettre les free
+	print_tab((f.size) - 1, tab);
+	dbs_del(&tetris);
 	return (0);
 }

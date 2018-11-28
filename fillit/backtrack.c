@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:14:53 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/28 09:49:34 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 13:11:56 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <unistd.h>
 #include "s_dbs.h"
 #include "backtrack.h"
-#include "init.h"
+#include "init_var.h"
 #include "libft/includes/libft.h"
 
-static void	ecrisforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
+static void		ecrisforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 {
 	int count;
 	int tmppos[2];
@@ -36,7 +36,7 @@ static void	ecrisforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 	}
 }
 
-static void	effaceforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
+static void		effaceforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 {
 	int count;
 	int tmppos[2];
@@ -54,8 +54,8 @@ static void	effaceforme(int pos[2], t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 	}
 }
 
-
-static int	checkpos(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB], int pos[2])
+static int		checkpos(int size, t_dbs *tetris,
+						char tab[LIMTAB][LIMTAB], int pos[2])
 {
 	int count;
 	int tmppos[2];
@@ -77,9 +77,9 @@ static int	checkpos(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB], int pos[2
 	return (1);
 }
 
-int			backtrack(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB])
+int				backtrack(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB])
 {
-	int pos[2]; //[0] <=> y, [1] <=> x
+	int pos[2];
 
 	pos[0] = 0;
 	while (pos[0] < size)

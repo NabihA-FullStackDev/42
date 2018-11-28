@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   init_var.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 10:33:07 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/28 12:37:24 by naali            ###   ########.fr       */
+/*   Created: 2018/11/26 12:37:44 by jucapik           #+#    #+#             */
+/*   Updated: 2018/11/28 13:09:39 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef INIT_VAR_H
+# define INIT_VAR_H
 
-# define F_ERROR "error\n"
-# define F_ERSIZ 6
+# include "backtrack.h"
 
-# define F_USE "usage: ./fillit source_file\n"
-# define F_USI 28
-
-int		errorlines(char *line);
-int		errorform(char **tab);
-int		check_file(int ac, char **av);
-void	full_free_tab(char **tab);
+int		init_size(int surfacemin);
+void	init_tab(char tab[LIMTAB][LIMTAB]);
+void	print_tab(int size, char tab[LIMTAB][LIMTAB]);
 
 #endif
