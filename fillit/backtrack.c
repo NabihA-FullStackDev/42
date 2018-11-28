@@ -6,28 +6,9 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:14:53 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 19:08:24 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 09:49:34 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-//A AJOUTER:
-// header dbs
-
-//verifie si on peut mettre en position [x, y] (commence toujours a [0, 0])
-//si oui:
-//	mettre la piece
-//	si c'est la derniere piece:
-//		renvoyer 1, c'est la solution
-//	si non:
-//		et rappeler la fonction avec la piece suivante
-//		si la fonction return -1, essayer la position suivante
-//		si renvois 1, c'est la solution donc renvoyer 1
-//si non:
-//	essayer a la place suivant
-//si on arrive a la fin sans avoir pu placer la piece, return -1 et si
-//c'est la premiere piece on met tab a NULL 
-//pdir[3][2] -> pdir => {[y, x], [y, x], [y, x]}
 
 #include <stdlib.h>
 #include <stdio.h>

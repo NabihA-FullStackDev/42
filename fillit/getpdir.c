@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:04:32 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 15:10:43 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/27 09:13:47 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	modifpdir(char **tab, int pos[2], t_dbs *tetris, int *pdiriter)
 		xtmp = -1;
 		ytmp = -1;
 	}
-	else if (tab[pos[0]][pos[1]] == '#' && xtmp != -1 && ytmp != -1)
+	if (tab[pos[0]][pos[1]] == '#' && xtmp != -1 && ytmp != -1)
 	{
 		tetris->pdir[*pdiriter][0] = pos[0] - ytmp;
 		tetris->pdir[*pdiriter][1] = pos[1] - xtmp;

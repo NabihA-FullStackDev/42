@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/26 15:10:27 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 10:35:40 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 
 int			errorlines(char *line)
 {
-	int i;
+	static int	linenb = 1;
+	int			i;
 
-	if (ft_strlen(line) != 4)
+	if ((linenb % 5 != 0 && ft_strlen(line) != 4) ||
+			(linenb % 5 == 0 && ft_strcmp(line, "") != 0))
 		return (-1);
+	++linenb;
 	i = 0;
 	while (i < 4)
 	{
