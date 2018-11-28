@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   get_tetriannex.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 12:49:12 by naali             #+#    #+#             */
-/*   Updated: 2018/11/28 16:23:46 by naali            ###   ########.fr       */
+/*   Created: 2018/11/28 16:16:15 by naali             #+#    #+#             */
+/*   Updated: 2018/11/28 16:19:24 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#ifndef GET_TETRIANNEX_H
+# define GET_TETRIANNEX_H
 
-typedef struct	s_fill
-{
-	int		fd;
-	int		check;
-	int		quare;
-	int		size;
-	char	**tab;
-}				t_fill;
+# include "s_dbs.h"
+
+t_dbs		**copytabtolst(char **tab, t_dbs **tetris, int id);
+int			checktab(char **tab, t_dbs **tetris, int i);
+int			copylinetotab(char **line, char **tab, int *empty);
+char		**init_tab45(void);
+int			checknlist(t_dbs **tetris, char **tab,
+						int *nb_tetri, int *i);
 
 #endif

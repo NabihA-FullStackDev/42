@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:37:03 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/28 13:14:21 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/28 16:23:33 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ int		main(int ac, char **av)
 	tetris = NULL;
 	if ((f.fd = check_file(ac, av)) == -1)
 		return (-1);
-	if ((f.ssquare = get_tetriminos(f.fd, &tetris, f.tab)) == -1)
+	if ((f.quare = get_tetriminos(f.fd, &tetris, f.tab)) == -1 || f.quare == 0)
+	{
+		dbs_del(&tetris);
+		write(1, F_ERROR, F_ERSIZ);
 		return (-1);
+	}
 	f.check = -1;
-	f.size = init_size(f.ssquare * 4);
+	f.size = init_size(f.quare * 4);
 	init_tab(tab);
 	while (f.check == -1 && f.size < LIMTAB)
 	{
