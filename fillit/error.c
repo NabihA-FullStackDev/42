@@ -6,7 +6,7 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/28 10:35:40 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 10:40:50 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			errorlines(char *line)
 		return (-1);
 	++linenb;
 	i = 0;
-	while (i < 4)
+	while (i < 4 && line[i] != '\0')
 	{
 		if (line[i] != '#' && line[i] != '.')
 			return (-1);
