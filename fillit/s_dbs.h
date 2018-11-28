@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:58:07 by naali             #+#    #+#             */
-/*   Updated: 2018/11/23 15:55:08 by naali            ###   ########.fr       */
+/*   Updated: 2018/11/26 15:49:01 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct				s_dbs
 	t_dbs		*next;
 };
 
-t_dbs			*dbs_new(const char id, int pdir[NBPDIR][COORDO]);
+t_dbs			*dbs_new(const char id);
 void			dbs_pushback(t_dbs **head, t_dbs *node);
 void			dbs_del(t_dbs **head);
 int				dbs_size(const t_dbs *head);

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   init_tab.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 10:33:07 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 19:03:15 by naali            ###   ########.fr       */
+/*   Created: 2018/11/26 12:37:44 by jucapik           #+#    #+#             */
+/*   Updated: 2018/11/26 17:14:28 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef INIT_TAB_H
+# define INIT_TAB_H
 
-int		errorlines(char *line);
-int		errorform(char **tab);
-int		check_file(int ac, char **av);
+#include "backtrack.h"
+
+int		init_size(int surfacemin);
+void	init_tab(char tab[LIMTAB][LIMTAB]);
+void	print_tab(int size, char tab[LIMTAB][LIMTAB]);
 
 #endif

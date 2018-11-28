@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   getpdir.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 10:33:07 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 19:03:15 by naali            ###   ########.fr       */
+/*   Created: 2018/11/25 11:22:41 by jucapik           #+#    #+#             */
+/*   Updated: 2018/11/25 19:04:25 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef GETPDIR_H
+# define GETPDIR_H
 
-int		errorlines(char *line);
-int		errorform(char **tab);
-int		check_file(int ac, char **av);
+int		getpdir(char **tab, t_dbs *tetris);
 
 #endif

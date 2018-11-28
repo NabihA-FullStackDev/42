@@ -6,23 +6,26 @@
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 08:21:50 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 10:05:01 by jucapik          ###   ########.fr       */
+/*   Updated: 2018/11/28 10:40:50 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "error.h"
 #include "libft/includes/libft.h"
+#include "error.h"
 
 int			errorlines(char *line)
 {
-	int i;
+	static int	linenb = 1;
+	int			i;
 
-	if (ft_strlen(line) != 4)
+	if ((linenb % 5 != 0 && ft_strlen(line) != 4) ||
+			(linenb % 5 == 0 && ft_strcmp(line, "") != 0))
 		return (-1);
+	++linenb;
 	i = 0;
-	while (i < 4)
+	while (i < 4 && line[i] != '\0')
 	{
 		if (line[i] != '#' && line[i] != '.')
 			return (-1);
@@ -31,23 +34,23 @@ int			errorlines(char *line)
 	return (1);
 }
 
-static int	getnbconnect(char tab[4][4], i, j);
+static int	getnbconnect(char **tab, int i, int j)
 {
 	int	nbconnect;
 
 	nbconnect = 0;
 	if (i + 1 < 4 && tab[i + 1][j] == '#')
 		nbconnect++;
-	if (i - 1 > 0 && tab[i - 1][j] == '#')
+	if (i - 1 >= 0 && tab[i - 1][j] == '#')
 		nbconnect++;
 	if (j + 1 < 4 && tab[i][j + 1] == '#')
 		nbconnect++;
-	if (j - 1 > 0 && tab[i][j - 1] == '#')
+	if (j - 1 >= 0 && tab[i][j - 1] == '#')
 		nbconnect++;
 	return (nbconnect);
 }
 
-int			errorform(char tab[4][5])
+int			errorform(char **tab)
 {
 	int		i;
 	int		j;
@@ -60,7 +63,7 @@ int			errorform(char tab[4][5])
 	while (i < 4)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < 5)
 		{
 			if (tab[i][j] == '#')
 			{

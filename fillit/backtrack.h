@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   backtrack.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jucapik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 10:33:07 by jucapik           #+#    #+#             */
-/*   Updated: 2018/11/25 19:03:15 by naali            ###   ########.fr       */
+/*   Created: 2018/11/26 12:50:19 by jucapik           #+#    #+#             */
+/*   Updated: 2018/11/26 15:00:53 by jucapik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef BACKTRACK_H
+# define BACKTRACK_H
 
-int		errorlines(char *line);
-int		errorform(char **tab);
-int		check_file(int ac, char **av);
+# include "s_dbs.h"
+# define LIMTAB 25
+
+int		backtrack(int size, t_dbs *tetris, char tab[LIMTAB][LIMTAB]);
 
 #endif
