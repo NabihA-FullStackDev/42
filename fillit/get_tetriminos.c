@@ -6,7 +6,7 @@
 /*   By: naali <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:52:28 by naali             #+#    #+#             */
-/*   Updated: 2018/11/28 16:38:12 by naali            ###   ########.fr       */
+/*   Updated: 2018/12/01 18:09:54 by naali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ int					get_tetriminos(int fd, t_dbs **tetris, char **tab)
 		else if (i < 4 && i != -1 && *line != '\0')
 			i = i + 1;
 		if (checknlist(tetris, tab, &nb_tetri, &i) == -1)
+		{
+			if (line != NULL)
+				free(line);
 			return (-1);
+		}
 	}
 	full_free_tab(tab);
 	return ((i == 0 && empty == 0) ? nb_tetri : -1);
